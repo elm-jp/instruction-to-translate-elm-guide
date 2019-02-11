@@ -1,6 +1,6 @@
 # Instruction to translate Elm guide
 
-An instruction to maintain translation project of [Elm guide](https://guide.elm-lang.org) well based on [Japanese translation project](https://github.com/elm-jp/guide/) by [Elm-jp](https://elm-lang.jp).
+An instruction to maintain translation project of [Elm guide](https://guide.elm-lang.org) based on [Japanese translation project](https://github.com/elm-jp/guide/) by [Elm-jp](https://elm-lang.jp).
 
 The Elm guide is the best document for learning Elm, so translating it into your language helps a lot with making Elm mainstream.
 Nice contribution!
