@@ -1,70 +1,72 @@
-# Japanese translation of guide.elm-lang.org
+# __Japanese__ translation of guide.elm-lang.org
 
 [Original version](https://github.com/evancz/guide.elm-lang.org/)
 
-guide.elm-lang.org 日本語化プロジェクト
+__Japanese__ translation project of Elm guide.
 
-たまに大元のプロジェクトの変更をマージします。
+## Contributing translation
 
-## 進捗
+The way to contribute this project is not only translating by yourself.
+Here are some options.
 
-`robots.txt` でコメントアウトされているページはまだ翻訳が公開されていません。
-`robots.txt` で検索エンジンによるクロールを禁止することで、コピーコンテンツと見なされて順位が低下するのを防いでいます。
+### Read the content as beginner
 
-## 翻訳に貢献する
+Elm guide should be understood by beginners.
+So, if you are new-be to Elm, it is super helpful to tell us "This translated sentence is not so natural, and I could not understand what it actually means".
+Please report as an issue freely.
 
-え？ 貢献してくれるんですか？！
-It's super helpful!
+### Review translations
 
-### レビュアーとして貢献する
+The greatest part of Elm is that it has a nice compiler.
+One bad news about translation is that we do not have such a compiler claims our wrong translations.
+We need some _compilers_ who reviews our translations.
 
-他の方が翻訳した内容をレビューしていただける方も大募集です！
-ご都合の良いときにマージ前のプルリクに対して「もしかしたらここはこうしたらもっとわかりやすくなるかも！」みたいなコメントをつけていただくだけです。
-翻訳作業もレビュアーとしての参加もとてもとてもありがたいです！
+We are creating pull requests when creating new translation of pages, so feel free to comment on them.
 
-### 翻訳のやり方
+### Translate pages
 
-`./book` 以下のファイルの英語の原文をコメントアウトして、その下に日本語を記入していきます。
-[サンプル](https://github.com/elm-jp/guide/pull/1)
+#### Preparing environment
 
-```bash
-$ npx pretranslate ./book/your_file_to_translate
-```
+If it is the second time you translate, this step can be omitted.
 
-を実行することで、自動的に対象ファイルをパラグラフごとにコメントアウトし、さらに `./book/about_translation.md` の対訳表にしたがって文中に出てくる用語の標準的な対訳を付記してくれます。
-
-対訳表自体は手動で更新が必要です。重要そうな単語を訳した際に都度対訳表に追加してください。
-
-### 翻訳の方針
-
-翻訳の方針については[翻訳について](https://github.com/elm-jp/guide/blob/master/book/about_translation.md)を事前にご確認ください。
-
-### 翻訳しようと決めたら
-
-せっかく翻訳していただいたのに、実は同時に他の人が同じところを翻訳していて先にPRを出されちゃったらすごくもったいないですよね？
-それを防ぐためにまず対応する issue を探して「これを担当します」とコメントするか、権限がある方は自分を assign してください。
-他の人が「お、これは作業中だな」と気づくのでオススメです！
-
-また、こちらは任意ですが
+The first thing you have to do is cloning this repository and installing dependencies.
 
 ```bash
-$ git checkout -b ${your_branch_name}
-$ git commit --allow-empty -m 'Empty commit'
-$ git push origin ${your_branch_name}
-```
-
-のように空のコミットでブランチをプッシュして、「[WIP] interop/flags.md」 みたいなタイトルのPRを作っても良いでしょう。
-
-## ローカル環境で確認する
-
-まず下記のコマンドで依存するプログラムをインストールします。
-
-```bash
+$ cd $CLONED_DIRECTORY
 $ npm i
 $ npm run install
 ```
 
-下記のコマンドで開発サーバーが立ち上がります。
+Make sure to install node.js before.
+
+#### Find a section to translate
+
+You must create an issue "Translate XXXXXX" before translating a page.
+It helps others to avoid accidentally start translating the same page.
+So, you have to check issues to assure that no one is working on the page you want to translate.
+
+#### Prepare to translate
+
+After deciding which file to translate, it's time to use `pretranslate` command.
+
+```bash
+$ npx pretranslate ./book/YOUR_FILE_TO_TRANSLATE
+```
+
+Please replace `YOUR_FILE_TO_TRANSLATE` into path to the markdown file you want to translate.
+It results in target file is commented out per paragraphs.
+You may also see some notes about how to unify translation of a term among other translators.
+The note is generated based on the translation table in the `./book/about_translation.md`.
+So, it is recommended to put a term into the translation table when you faced a term which should be shared translations among others.
+
+#### Translate
+
+Put your translations under commented out paragraphs.
+Make sure to obey the policy written in the section "About translation".
+
+#### Check if it can be rendered correctly.
+
+The command bellow starts a development server.
 
 ```bash
 $ npm start
@@ -74,11 +76,15 @@ Starting server ...
 Serving book on http://localhost:4000
 ```
 
-`http://localhost:4000` にアクセスすることで表示の確認ができます。
+Check your translation is rendered as expected by opening the URL.
 
-## 本番環境へのデプロイ
+#### Create PR
 
-いまはCIが自動でやっていますが、念のため記載しておきます。
+After translating a page, create a PR.
+
+## Deploying production server
+
+It is recommended to set up CI to execute following commands when master branch changes.
 
 ```bash
 $ git checkout master
@@ -86,3 +92,36 @@ $ npm run build
 $ git add docs && git commit -m 'Update docs' && git push origin master
 ```
 
+Also, be aware to allow search engine bots to access new page by updating `robots.txt`.
+
+## Merge changes on original content
+
+Elm guide itself is actively updating, so sometimes we have to merge their changes into this repository.
+
+We do update translations by our hands with the aid of `git`.
+
+Here is the way to do that with git.
+
+1. Beforehand, register Evan's original repository as another remote.
+
+```
+$ git remote add evan github:evancz/guide.elm-lang.org.git
+$ git remote -v
+evan	github:evancz/guide.elm-lang.org.git (fetch)
+evan	github:evancz/guide.elm-lang.org.git (push)
+origin	github:elm-jp/guide.git (fetch)
+origin	github:elm-jp/guide.git (push)
+```
+
+2. Update `evan/origin` and merge.
+
+```
+$ git checkout master
+$ git fetch evan
+$ git checkout -b merge-evan
+$ git merge evan/master
+```
+
+Here you would have to resolve conflictions.
+
+After merging, make sure to update diff URL on `about_translation.md`.
