@@ -5,6 +5,8 @@ An instruction to maintain translation project of [Elm guide](https://guide.elm-
 The Elm guide is the best document for learning Elm, so translating it into your language helps a lot with making Elm mainstream.
 Nice contribution!
 
+![sakura](https://user-images.githubusercontent.com/1481749/52553026-9d587b00-2e25-11e9-82a4-a5a32d2f17a2.jpg)
+
 ## Preparing a very beginning of translation project for your language
 
 Let's create your own translation project step by step.
